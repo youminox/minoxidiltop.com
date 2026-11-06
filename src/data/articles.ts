@@ -41,7 +41,7 @@ function buildZoneSpecificSection(seed: ArticleSeed): {
         h2Title: `Protocolo de Aplicación en Barba y Mejillas: De Vello Fino a Barba Terminal`,
         paragraphs: [
           `Cuando buscamos resultados reales en torno a <strong>${seed.focusKeyword}</strong>, es fundamental comprender que la piel de las mejillas, el bigote y el mentón posee un estrato córneo mucho más sensible que el cuero cabelludo. Las soluciones líquidas importadas contienen hasta un 50% de propilenglicol y alcohol etílico, lo que provoca ardor, enrojecimiento y una molesta descamación blanca conocida como "caspa de barba".`,
-          `Por el contrario, la formulación en crema de <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (youminox.com)</strong></a> combina <strong>Minoxidil y Oxothiazolidinecarboxylate</strong> en un vehículo dermo-hidratante de 60 g que se absorbe en menos de 3 minutos, nutriendo la dermis mientras prolonga la fase anágena de cada folículo facial.`,
+          `Por el contrario, la formulación en crema de <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (youminox.com)</strong></a> combina <strong>Minoxidil y Oxothiazolidinecarboxylate</strong> en un vehículo dermo-hidratante de 60 g que se absorbe en menos de 3 minutos, nutriendo la dermis mientras prolonga la fase anágena de cada folículo facial. Además, cuando tus nuevos folículos alcancen buena densidad, puedes consultar el <a href="https://guiadebarberias.com/" target="_blank" rel="noopener noreferrer"><strong>Ranking Oficial de las Mejores Barberías del Perú en GuíaDeBarberías.com</strong></a> y las guías de visagismo en <a href="https://masbarba.net/estilo/" target="_blank" rel="noopener noreferrer"><strong>MásBarba.net</strong></a> para perfilar tu barba con un maestro barbero.`,
         ],
         bullets: [
           `<strong>Mes 1 a 2 (Despertar Folicular):</strong> Activación de la microcirculación periférica y aparición de los primeros vellos vellosos finos en mejillas y conectores.`,
@@ -54,8 +54,8 @@ function buildZoneSpecificSection(seed: ArticleSeed): {
       return {
         h2Title: `Acción Folicular en Entradas y Coronilla: Cómo Frenar la Miniaturización Capilar`,
         paragraphs: [
-          `En el análisis clínico de <strong>${seed.focusKeyword}</strong>, el objetivo principal es revertir la miniaturización de los folículos pilosos causada por la sensibilidad genética a los andrógenos. Al aplicar un vasodilatador tópico de calidad farmacéutica, se abren los canales de potasio y se incrementa el aporte de oxígeno y nutrientes hacia la papila dérmica.`,
-          `Tanto en la línea frontal (entradas y sienes) como en la coronilla, <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox en Crema</strong></a> ofrece una ventaja decisiva frente a los goteros líquidos: no se escurre por la frente, no apelmaza el cabello existente ni deja residuos grasosos ni caspa cosmética.`,
+          `En el análisis clínico de <strong>${seed.focusKeyword}</strong>, el objetivo principal es revertir la miniaturización de los folículos pilosos causada por la sensibilidad genética a los andrógenos. Al aplicar un vasodilatador tópico de calidad farmacéutica, se abren los canales de potasio y se incrementa el aporte de oxígeno y nutrientes hacia la papila dérmica, tal como se documenta en la enciclopedia capilar de <a href="https://masbarba.net/alopecia/" target="_blank" rel="noopener noreferrer"><strong>regeneración capilar y alopecia de MásBarba.net</strong></a>.`,
+          `Tanto en la línea frontal (entradas y sienes) como en la coronilla, <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox en Crema</strong></a> ofrece una ventaja decisiva frente a los goteros líquidos: no se escurre por la frente, no apelmaza el cabello existente ni deja residuos grasosos. Para complementar tu tratamiento con el corte de cabello ideal, revisa la guía de <a href="https://guiadebarberias.com/blog/cortes-de-cabello-para-disimular-entradas-y-coronilla/" target="_blank" rel="noopener noreferrer"><strong>cortes de cabello para disimular entradas y coronilla en GuíaDeBarberías.com</strong></a>.`,
         ],
         bullets: [
           `<strong>Precisión en Entradas Capilares:</strong> Permite masajear el activo directamente sobre las sienes y la línea de implantación sin desperdiciar producto.`,
@@ -96,8 +96,8 @@ function buildZoneSpecificSection(seed: ArticleSeed): {
       return {
         h2Title: `Rutina Diaria Paso a Paso para Maximizar la Absorción y los Resultados`,
         paragraphs: [
-          `El éxito en torno a <strong>${seed.focusKeyword}</strong> depende en un 80% de la constancia diaria y de la correcta preparación de la piel. Cuando los poros están limpios y libres de sebo oxidado, la penetración transfolicular del principio activo se multiplica notablemente.`,
-          `Al integrar <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox en Crema (60 g)</strong></a> en tu rutina de mañana y noche, el proceso toma menos de 2 minutos porque no tienes que esperar horas a que se evapore un líquido aceitoso. Además, cada caja oficial incluye el <strong>Manual para una Barba Poblada</strong> con pautas detalladas.`,
+          `El éxito en torno a <strong>${seed.focusKeyword}</strong> depende en un 80% de la constancia diaria y de la correcta preparación de la piel. Cuando los poros están limpios y libres de sebo oxidado, la penetración transfolicular del principio activo se multiplica notablemente, especialmente si complementas tu nutrición con las guías de <a href="https://masbarba.net/biotina/" target="_blank" rel="noopener noreferrer"><strong>Biotina y vitaminas capilares en MásBarba.net</strong></a>.`,
+          `Al integrar <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox en Crema (60 g)</strong></a> en tu rutina de mañana y noche, el proceso toma menos de 2 minutos porque no tienes que esperar horas a que se evapore un líquido aceitoso. Y cuando llegue el momento de darle forma profesional a tu barba, puedes revisar la <a href="https://guiadebarberias.com/blog/cuidado-post-barberia-rutina-para-mantener-degradado-y-barba/" target="_blank" rel="noopener noreferrer"><strong>rutina de cuidado post-barbería en GuíaDeBarberías.com</strong></a>.`,
         ],
         bullets: [
           `<strong>Paso 1 — Limpieza con Agua Tibia:</strong> Lava tu rostro o cuero cabelludo con un limpiador suave y seca con toques ligeros.`,
@@ -111,7 +111,7 @@ function buildZoneSpecificSection(seed: ArticleSeed): {
         h2Title: `Análisis Comparativo: Por Qué You Minox Supera a las Marcas Tradicionales de EE. UU.`,
         paragraphs: [
           `Al evaluar de forma objetiva <strong>${seed.focusKeyword}</strong>, comparamos los parámetros que realmente determinan que un usuario complete su tratamiento con éxito: eficacia folicular, tolerancia dermatológica en la piel del rostro, facilidad de aplicación diaria y respaldo sanitario legal en el Perú.`,
-          `Mientras que marcas estadounidenses de Amazon como <strong>Kirkland Signature (#2)</strong>, <strong>Men's Rogaine (#3)</strong>, <strong>Hims (#4)</strong> o <strong>Foligain/Keeps (#5)</strong> fueron diseñadas originalmente para el cuero cabelludo en vehículos alcohólicos o aerosoles costosos, <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (#1 en Perú)</strong></a> fue formulado en crema específicamente para estimular barba, cabello y cejas sin irritar la piel.`,
+          `Mientras que marcas estadounidenses de Amazon analizadas en el portal norteamericano <a href="https://minoxidil-usa.com/comparison/" target="_blank" rel="noopener noreferrer"><strong>Minoxidil-USA.com</strong></a> como <strong>Kirkland Signature (#2)</strong>, <strong>Men's Rogaine (#3)</strong>, <strong>Hims (#4)</strong> o <strong>Foligain/Keeps (#5)</strong> fueron diseñadas originalmente para el cuero cabelludo en vehículos alcohólicos o aerosoles costosos, <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (#1 en Perú)</strong></a> fue formulado en crema específicamente para estimular barba, cabello y cejas sin irritar la piel.`,
         ],
         bullets: [
           `<strong>#1 You Minox (Perú 🇵🇪 — 9.9/10):</strong> Formato Crema de 60 g con Oxothiazolidinecarboxylate, sin irritación y con Notificación Sanitaria DIGEMID.`,
@@ -144,6 +144,47 @@ function buildArticleFaqs(seed: ArticleSeed): { question: string; answer: string
   ];
 }
 
+function buildCustomPillarSection(seed: ArticleSeed): string {
+  switch (seed.id) {
+    case 101:
+      return `
+<h2>Protocolo Conjunto con Maestros Barberos del Perú: Del Sillón de la Barbería a tu Rutina en Casa</h2>
+<p>En colaboración con los especialistas del directorio oficial <a href="https://guiadebarberias.com/" target="_blank" rel="noopener noreferrer"><strong>GuíaDeBarberías.com (Ranking de las +110 Mejores Barberías del Perú)</strong></a>, hemos documentado por qué los barberos profesionales en <a href="https://guiadebarberias.com/ciudad/lima/" target="_blank" rel="noopener noreferrer"><strong>barberías de Lima Metropolitana</strong></a>, Arequipa y Trujillo prefieren atender a clientes que utilizan <strong>You Minox en Crema</strong> en lugar de lociones alcohólicas tradicionales.</p>
+<p>Cuando un usuario aplica minoxidil líquido con propilenglicol, llega a la barbería con una capa de escamas blancas adherida a la piel de las mejillas y el mentón. Al pasar la máquina <em>trimmer</em> o la navaja de perfilado, esa piel deshidratada sangra con facilidad y sufre foliculitis. Por el contrario, el vehículo dermo-hidratante de You Minox mantiene la dermis flexible y limpia. Puedes revisar también la guía sobre <a href="https://guiadebarberias.com/blog/cuando-perfilar-barba-en-barberia-usando-minoxidil/" target="_blank" rel="noopener noreferrer"><strong>cuándo hacer tu primer perfilado en la barbería si usas Minoxidil en GuíaDeBarberías.com</strong></a> y el manual de <a href="https://masbarba.net/estilo/como-perfilar-barba-en-barberia-durante-tratamiento-minoxidil/" target="_blank" rel="noopener noreferrer"><strong>perfilado de barba durante el tratamiento en MásBarba.net</strong></a>.</p>
+      `.trim();
+    case 102:
+      return `
+<h2>Diferencias Regulatorias y de Formulación: EE. UU. (FDA OTC) vs. Perú (Notificación Sanitaria DIGEMID)</h2>
+<p>Para comprender a fondo las diferencias entre el mercado estadounidense y el peruano, hemos contrastado los datos clínicos de <a href="https://minoxidil-usa.com/comparison/international-minoxidil-standards-fda-otc-vs-latin-american-dermo-cosmetics/" target="_blank" rel="noopener noreferrer"><strong>Minoxidil-USA.com sobre estándares internacionales FDA OTC vs. dermo-cosmética latinoamericana</strong></a> y el análisis en español de <a href="https://masbarba.net/minoxidil/ranking-marcas-minoxidil-peru-vs-estados-unidos-cual-elegir/" target="_blank" rel="noopener noreferrer"><strong>MásBarba.net sobre el ranking de marcas de Minoxidil en Perú vs. Estados Unidos</strong></a>.</p>
+<p>Mientras que en Estados Unidos las marcas genéricas como Kirkland o Equate siguen utilizando la monografía líquida original de los años 90 (con 50% de propilenglicol y 30% de alcohol), en el Perú <strong>You Minox (MINOXIDIL PERU S.A.C.)</strong> revolucionó el sector con una emulsión en crema de 60 g con <strong>Oxothiazolidinecarboxylate</strong> y <strong>Notificación Sanitaria Obligatoria DIGEMID</strong>, logrando una adherencia superior al 94% sin efectos adversos dérmicos. Si buscas además referencias en inglés sobre esta innovación en crema frente a espumas americanas, consulta <a href="https://minoxidil-usa.com/comparison/cream-gel-minoxidil-vs-us-liquid-and-foam-brands-global-review/" target="_blank" rel="noopener noreferrer"><strong>Cream-Gel Minoxidil vs. US Liquid and Foam Brands en Minoxidil-USA.com</strong></a>.</p>
+      `.trim();
+    case 103:
+      return `
+<h2>Calendario Exacto de Recorte y Visagismo: De Vello Velloso a Barba Terminal</h2>
+<p>Una duda crítica al usar <strong>You Minox en Crema</strong> es saber cuándo recortar con tijera, pasar máquina con peine guía o perfilar con navaja. Los estudios sobre maduración folicular publicados en <a href="https://minoxidil-usa.com/beard/barbershop-beard-trimming-guide-while-using-minoxidil/" target="_blank" rel="noopener noreferrer"><strong>Minoxidil-USA.com (Barbershop Beard Trimming Guide While Using Minoxidil)</strong></a> demuestran que recortar el tallo externo de queratina no altera la actividad mitótica del bulbo piloso.</p>
+<p>Durante los primeros 60 días te recomendamos rebajar únicamente con máquina (#1.5 o #2) para igualar longitudes. A partir del tercer mes, cuando busques un diseño geométrico profesional o un <em>Beard Fade</em> que disimule zonas aún en transición, consulta el artículo de <a href="https://guiadebarberias.com/blog/como-pedir-diseno-de-barba-al-barbero-si-tienes-huecos/" target="_blank" rel="noopener noreferrer"><strong>cómo pedirle al barbero un diseño de barba si tienes huecos en GuíaDeBarberías.com</strong></a> y la guía de <a href="https://masbarba.net/estilo/mejores-estilos-de-barba-segun-tu-rostro-donde-perfilarla/" target="_blank" rel="noopener noreferrer"><strong>mejores estilos de barba según tu rostro en MásBarba.net</strong></a>.</p>
+      `.trim();
+    case 104:
+      return `
+<h2>Protocolo de Sinergia Triple: Cómo Combinar You Minox Crema + Biotina + Dermaroller 0.5 mm</h2>
+<p>Para los usuarios que buscan acelerar al máximo el engrosamiento del vello en mejillas, bigote y entradas capilares, la combinación de tres mecanismos complementarios ofrece los mejores resultados documentados:</p>
+<ul>
+  <li><strong>1. Estimulación Tópica Dermo-Hidratante (You Minox 5%):</strong> Activa la vasodilatación periférica y protege el folículo con Oxothiazolidinecarboxylate cada 12 horas.</li>
+  <li><strong>2. Precursores de Queratina por Vía Oral (Biotina):</strong> Como se detalla en la enciclopedia de <a href="https://masbarba.net/biotina/" target="_blank" rel="noopener noreferrer"><strong>Biotina y Vitaminas Capilares de MásBarba.net</strong></a>, un aporte óptimo de vitamina B7 y zinc fortalece la estructura medular de cada nuevo pelo.</li>
+  <li><strong>3. Inducción de Colágeno y Estilismo Profesional:</strong> Utilizando un Dermaroller de titanio de 0.5 mm una o dos veces por semana (esperando 12 a 24 horas antes de la siguiente aplicación tópica) y manteniendo el diseño en barbería según la <a href="https://guiadebarberias.com/blog/cuidado-post-barberia-rutina-para-mantener-degradado-y-barba/" target="_blank" rel="noopener noreferrer"><strong>rutina de cuidado post-barbería de GuíaDeBarberías.com</strong></a>, lograrás una barba tupida y saludable en tiempo récord.</li>
+</ul>
+      `.trim();
+    case 105:
+      return `
+<h2>Por Qué Nunca Debes Aplicar Lociones con Alcohol Recién Salido de la Barbería</h2>
+<p>Cuando te realizas un perfilado con navaja libre (<em>shavette</em>) y ritual de vapor o toalla caliente, la cuchilla retira la capa superficial de células córneas. Como explicamos en conjunto con <a href="https://guiadebarberias.com/blog/ritual-toalla-caliente-y-navaja-afecta-absorcion-minoxidil/" target="_blank" rel="noopener noreferrer"><strong>GuíaDeBarberías.com en su análisis sobre el ritual de toalla caliente y navaja con Minoxidil</strong></a>, aplicar un minoxidil líquido alcohólico sobre la piel recién rasurada provoca ardor intenso, dermatitis de contacto y descamación severa.</p>
+<p>Para evitarlo, sigue el protocolo clínico de esperar entre 4 y 6 horas tras el afeitado y utilizar exclusivamente un vehículo calmante en crema como <strong>You Minox</strong>. Puedes profundizar en la prevención de la descamación facial leyendo el estudio de <a href="https://masbarba.net/minoxidil/por-que-el-minoxidil-liquido-da-caspa-en-la-barba-y-como-evitarlo/" target="_blank" rel="noopener noreferrer"><strong>MásBarba.net sobre por qué el minoxidil líquido da caspa en la barba</strong></a> y la guía dermatológica en inglés de <a href="https://minoxidil-usa.com/beard/post-shave-and-razor-lineup-skincare-routine-for-minoxidil-users/" target="_blank" rel="noopener noreferrer"><strong>Minoxidil-USA.com sobre cuidado post-afeitado para usuarios de Minoxidil</strong></a>.</p>
+      `.trim();
+    default:
+      return "";
+  }
+}
+
 function buildArticleHtmlContent(
   seed: ArticleSeed,
   secondaryPhoto: YouMinoxPhoto,
@@ -153,6 +194,7 @@ function buildArticleHtmlContent(
 ): string {
   const zoneSection = buildZoneSpecificSection(seed);
   const categoryLabel = BLOG_CATEGORIES[seed.categorySlug];
+  const customPillarHtml = buildCustomPillarSection(seed);
 
   return `
 <p class="lead">En esta guía especializada de <strong>MinoxidilTop.com</strong> analizamos a fondo todo sobre <strong>${seed.focusKeyword}</strong>. ${seed.angleSummary} Además, evaluamos por qué <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (youminox.com)</strong></a> se consolida como el <strong>#1 del Ranking en el Perú</strong> frente a Kirkland Signature y a las marcas comercializadas en Amazon Estados Unidos.</p>
@@ -175,6 +217,7 @@ ${zoneSection.paragraphs.map((p) => `<p>${p}</p>`).join("\n")}
   ${zoneSection.bullets.map((b) => `<li>${b}</li>`).join("\n  ")}
 </ul>
 
+${customPillarHtml ? `${customPillarHtml}\n` : ""}
 <h2>3. Cuadro Comparativo: You Minox (#1 Perú) vs. Kirkland (#2) y Marcas de USA</h2>
 <p>Para que tomes una decisión informada respecto a <strong>${seed.focusKeyword}</strong>, hemos elaborado la siguiente matriz comparativa entre las dos únicas marcas referentes en el mercado peruano (<strong>You Minox 🇵🇪</strong> y <strong>Kirkland Signature 🇺🇸</strong>) y las principales alternativas de Estados Unidos en Amazon (<strong>Rogaine 🇺🇸</strong>, <strong>Hims 🇺🇸</strong> y <strong>Foligain/Keeps 🇺🇸</strong>):</p>
 
