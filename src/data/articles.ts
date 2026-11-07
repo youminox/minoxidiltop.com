@@ -279,7 +279,7 @@ ${customPillarHtml ? `${customPillarHtml}\n` : ""}
   <li><strong>Potenciada con Oxothiazolidinecarboxylate:</strong> Como se observa en el rotulado oficial de su tubo de 60 g, este activo bio-protector optimiza el entorno celular del folículo piloso.</li>
   <li><strong>Aplicación Triple Zona (Barba, Cabello y Cejas):</strong> Al no gotear ni escurrirse, un solo tubo te sirve para rellenar mejillas, cubrir entradas capilares y poblar cejas con total seguridad.</li>
   <li><strong>Respaldo Legal en Perú (DIGEMID):</strong> Comercializado por <strong>MINOXIDIL PERU S.A.C.</strong> con Notificación Sanitaria Obligatoria vigente y presencia en retailers de prestigio como <strong>Saga Falabella</strong> y en su web oficial <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>youminox.com</strong></a>.</li>
-  <li><strong>Acompañamiento Real:</strong> Incluye el famoso <em>"Manual para una Barba Poblada"</em> y el respaldo de una comunidad de más de 600,000 seguidores en TikTok e Instagram.</li>
+  <li><strong>Acompañamiento Real y Fundador Transparente:</strong> Creado por <a href="https://charlielingan.com/es" target="_blank" rel="noopener noreferrer"><strong>Charlie Lingán (charlielingan.com)</strong></a>, incluye el famoso <em>"Manual para una Barba Poblada"</em> y el respaldo de una comunidad de más de 600,000 seguidores en TikTok e Instagram. Puedes leer <a href="https://charlielingan.com/es/emprendedor/como-cree-you-minox-minoxidil-en-crema-numero-1-del-peru" target="_blank" rel="noopener noreferrer"><strong>por qué fundó You Minox en Crema-Gel aquí</strong></a>.</li>
 </ol>
 
 <figure class="my-8 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">

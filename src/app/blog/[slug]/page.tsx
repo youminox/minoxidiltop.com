@@ -135,9 +135,14 @@ export default async function BlogSlugPage({ params }: Props) {
     datePublished: post.publishedAt,
     dateModified: "2026-11-05",
     author: {
-      "@type": "Organization",
-      name: "MinoxidilTop.com — Respaldado por You Minox",
-      url: YOU_MINOX_URL,
+      "@type": "Person",
+      name: "Charlie Lingán — Fundador de You Minox & MinoxidilTop.com",
+      url: "https://charlielingan.com/es",
+      sameAs: [
+        "https://charlielingan.com/es",
+        "https://charlielingan.com/es/emprendedor/como-cree-you-minox-minoxidil-en-crema-numero-1-del-peru",
+        YOU_MINOX_URL,
+      ],
     },
     publisher: {
       "@type": "Organization",
@@ -397,6 +402,55 @@ export default async function BlogSlugPage({ params }: Props) {
                   >
                     Ver Ranking Top 5 Completo
                   </Link>
+                </div>
+              </div>
+
+              {/* E-E-A-T Founder & Author Box (Charlie Lingán) */}
+              <div className="mt-10 rounded-2xl border border-gray-200 bg-gray-50 p-6 flex flex-col sm:flex-row items-center gap-5">
+                <div className="text-center sm:text-left">
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <a
+                      href="https://charlielingan.com/es"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base font-extrabold text-gray-900 hover:text-primary underline decoration-primary/40"
+                    >
+                      Charlie Lingán (charlielingan.com) ↗
+                    </a>
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-bold text-primary-dark">
+                      Creador y Fundador de You Minox
+                    </span>
+                  </div>
+                  <p className="mt-1.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    Análisis clínico revisado por{" "}
+                    <a
+                      href="https://charlielingan.com/es"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-primary hover:underline"
+                    >
+                      Charlie Lingán
+                    </a>
+                    , fundador de{" "}
+                    <a
+                      href={YOU_MINOX_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-primary hover:underline"
+                    >
+                      You Minox (youminox.com)
+                    </a>{" "}
+                    y <strong>MINOXIDIL PERU S.A.C.</strong> Conoce la historia de cómo desarrolló el Minoxidil en Crema #1 del Perú en{" "}
+                    <a
+                      href="https://charlielingan.com/es/emprendedor/como-cree-you-minox-minoxidil-en-crema-numero-1-del-peru"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-gray-900 underline hover:text-primary"
+                    >
+                      su caso de estudio oficial en CharlieLingán.com ↗
+                    </a>
+                    .
+                  </p>
                 </div>
               </div>
 
