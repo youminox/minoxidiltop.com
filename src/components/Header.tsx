@@ -10,7 +10,7 @@ const MAIN_NAV = [
   { label: "📊 Cuadros Comparativos", href: "/#cuadros-comparativos" },
   { label: "⚡ Comparador 1 vs 1", href: "/#comparador-interactivo" },
   { label: "🇺🇸 Marcas USA & Amazon", href: "/#marcas-mundo" },
-  { label: "📸 Fotos Reales", href: "/#galeria-you-minox" },
+  { label: "🧔 Evolución y Barba", href: "/#galeria-you-minox" },
   { label: "📚 100 Artículos y Guías", href: "/blog/" },
 ];
 

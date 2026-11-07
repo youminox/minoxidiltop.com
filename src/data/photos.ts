@@ -3,7 +3,7 @@ export interface YouMinoxPhoto {
   src: string;
   alt: string;
   caption: string;
-  collection: "hielo" | "transparente" | "kit" | "crema" | "premium";
+  collection: "hielo" | "transparente" | "kit" | "crema" | "premium" | "barba";
 }
 
 export const YOU_MINOX_TRANSPARENT_PHOTOS = {
@@ -12,8 +12,127 @@ export const YOU_MINOX_TRANSPARENT_PHOTOS = {
 };
 
 /**
+ * 16 fotografías editoriales de hombres con barba, perfilado en barbería, línea capilar y cuidado facial
+ * para dar un aspecto 100% editorial y orgánico al Home y a las portadas de los artículos.
+ */
+export const LIFESTYLE_BEARD_PHOTOS: YouMinoxPhoto[] = [
+  {
+    id: 101,
+    src: "/images/lifestyle/hombre-barba-perfilado-profesional-01.webp",
+    alt: "Hombre con barba densa y perfilado profesional en barbería tras estimular folículos",
+    caption: "Evolución de barba cerrada y perfilado de mejillas: el objetivo del tratamiento constante de 6 meses.",
+    collection: "barba",
+  },
+  {
+    id: 102,
+    src: "/images/lifestyle/hombre-cabello-y-barba-corta-02.webp",
+    alt: "Hombre joven con barba corta uniforme y cabello saludable con buena densidad capilar",
+    caption: "Barba incipiente uniforme y línea frontal capilar fortalecida sin irritación ni descamación.",
+    collection: "barba",
+  },
+  {
+    id: 103,
+    src: "/images/lifestyle/cuidado-piel-sensible-barba-hidratacion-03.webp",
+    alt: "Aplicación de crema dermo-hidratante en rostro con barba tupida para cuidar la piel sensible",
+    caption: "La hidratación dérmica en crema evita la picazón, el enrojecimiento y la caspa de barba por alcohol.",
+    collection: "barba",
+  },
+  {
+    id: 104,
+    src: "/images/lifestyle/hombre-barba-cerrada-corporativa-04.webp",
+    alt: "Hombre con barba corporativa tupida recibiendo mantenimiento de contornos y patillas",
+    caption: "Barba ejecutiva sin huecos en las mejillas: transición de vello fino a vello terminal maduro.",
+    collection: "barba",
+  },
+  {
+    id: 105,
+    src: "/images/lifestyle/hombre-barba-densa-madura-05.webp",
+    alt: "Primer plano de barba densa y gruesa recortada con tijera profesional de barbería",
+    caption: "Fase de consolidación (Mes 5 a 6): vello terminal grueso con raíz profunda y permanente.",
+    collection: "barba",
+  },
+  {
+    id: 106,
+    src: "/images/lifestyle/detalle-foliculos-barba-y-patillas-06.webp",
+    alt: "Detalle de densidad folicular en patillas, mejillas y conectores del bigote masculino",
+    caption: "Cierre de espacios vacíos en mejillas y conectores mediante vasodilatación folicular diaria.",
+    collection: "barba",
+  },
+  {
+    id: 107,
+    src: "/images/lifestyle/recuperacion-linea-capilar-entradas-07.webp",
+    alt: "Cuidado y fortalecimiento de entradas capilares y volumen en la zona frontal masculina",
+    caption: "Fortalecimiento de entradas y línea frontal: prevención de la miniaturización folicular androgénica.",
+    collection: "barba",
+  },
+  {
+    id: 108,
+    src: "/images/lifestyle/cepillado-y-direccion-vello-terminal-08.webp",
+    alt: "Cepillado de barba abundante con cerdas naturales para estimular la microcirculación facial",
+    caption: "El cepillado diario distribuye los aceites naturales y entrena la dirección del nuevo vello facial.",
+    collection: "barba",
+  },
+  {
+    id: 109,
+    src: "/images/lifestyle/hombre-barba-incipiente-mes-2-09.webp",
+    alt: "Hombre latino con barba corta de 2 meses mostrando piel sana y libre de rojeces",
+    caption: "Etapa de despertar folicular (Mes 2): aparición de nuevos vellos en candado y mejillas sin resecar la piel.",
+    collection: "barba",
+  },
+  {
+    id: 110,
+    src: "/images/lifestyle/hombre-barba-corta-sin-irritacion-10.webp",
+    alt: "Preparación e hidratación del cuello y barba tupida sin irritación dérmica",
+    caption: "Piel limpia y poros abiertos antes de la aplicación nocturna para maximizar la absorción folicular.",
+    collection: "barba",
+  },
+  {
+    id: 111,
+    src: "/images/lifestyle/hombre-barba-candado-y-mejillas-11.webp",
+    alt: "Hombre con barba poblada y corte degradado mostrando excelente densidad en patillas y mentón",
+    caption: "Simetría entre corte de cabello y barba completa: resultados reales de una rutina disciplinada.",
+    collection: "barba",
+  },
+  {
+    id: 112,
+    src: "/images/lifestyle/hombre-barba-ejecutiva-cabello-sano-12.webp",
+    alt: "Retrato de hombre con barba definida y cabello grueso con gran volumen en la zona frontal",
+    caption: "Doble beneficio folicular: densidad saludable tanto en el cuero cabelludo como en la barba.",
+    collection: "barba",
+  },
+  {
+    id: 113,
+    src: "/images/lifestyle/cejas-pobladas-y-definidas-13.webp",
+    alt: "Rostro con cejas pobladas y definidas gracias al uso seguro de crema tópica sin escurrimiento",
+    caption: "Cejas más densas y definidas: el vehículo en crema permite una aplicación milimétrica y segura.",
+    collection: "barba",
+  },
+  {
+    id: 114,
+    src: "/images/lifestyle/rutina-cuidado-barba-espejo-14.webp",
+    alt: "Evaluación de densidad capilar en coronilla y cuero cabelludo masculino",
+    caption: "Control de volumen en la coronilla y zona superior con tratamientos tópicos que no apelmazan el pelo.",
+    collection: "barba",
+  },
+  {
+    id: 115,
+    src: "/images/lifestyle/hombre-barba-corporativa-lima-15.webp",
+    alt: "Perfilado de barba cerrada y línea de mejillas definida en barbería profesional",
+    caption: "Diseño de contornos limpios en mejillas y cuello una vez alcanzada la densidad deseada.",
+    collection: "barba",
+  },
+  {
+    id: 116,
+    src: "/images/lifestyle/hombre-barba-poblada-sonriente-16.webp",
+    alt: "Hombre sonriente con barba corta uniforme y piel hidratada libre de descamación",
+    caption: "Comodidad total durante el día: cero brillo graso y piel fresca desde la primera aplicación.",
+    collection: "barba",
+  },
+];
+
+/**
  * 34 fotografías profesionales de estudio de You Minox (convertidas de las 4 carpetas originales)
- * utilizadas en toda la plataforma y rotadas en los 100 artículos SEO para máxima variedad visual.
+ * utilizadas dentro del cuerpo de los 100 artículos SEO para máxima variedad visual.
  */
 export const YOU_MINOX_PHOTOS: YouMinoxPhoto[] = [
   // Colección 01: Hielo & Frescura Sin Irritación (10 fotos)
@@ -27,8 +146,8 @@ export const YOU_MINOX_PHOTOS: YouMinoxPhoto[] = [
   {
     id: 2,
     src: "/images/you-minox/you-minox-crema-barba-hielo-fresco-02.webp",
-    alt: "Minoxidil en crema You Minox 60g en estudio sobre hielo para alivio de irritación facial",
-    caption: "A diferencia del líquido con alcohol, You Minox mantiene la barrera cutánea fresca e hidratada.",
+    alt: "Hombre con barba sosteniendo You Minox Crema para Barba 60g para cuidado sin irritación facial",
+    caption: "A diferencia del líquido con alcohol, You Minox en crema cuida la piel de tu barba sin resecarla.",
     collection: "hielo",
   },
   {
@@ -264,20 +383,41 @@ export const YOU_MINOX_PHOTOS: YouMinoxPhoto[] = [
 ];
 
 /**
- * Devuelve una foto destacada y una segunda foto interior diferente para cada artículo (1..100),
- * garantizando que las 34 fotos profesionales se usen de forma equitativa en los 100 artículos.
+ * Devuelve una foto destacada (principalmente hombres con barba/estilo para un look editorial natural,
+ * con máximo 2 fotos de producto cada 12 artículos) y dos fotos de estudio de You Minox para el interior
+ * del artículo, garantizando que las 34 fotos profesionales se usen en los 100 artículos sin saturar el Home.
  */
 export function getPhotosForArticle(articleIndex: number): {
   featured: YouMinoxPhoto;
   secondary: YouMinoxPhoto;
   tertiary: YouMinoxPhoto;
 } {
-  const total = YOU_MINOX_PHOTOS.length;
-  const idx1 = (articleIndex - 1) % total;
-  const idx2 = (articleIndex + 11) % total;
-  const idx3 = (articleIndex + 22) % total;
+  const totalProduct = YOU_MINOX_PHOTOS.length;
+  const totalLifestyle = LIFESTYLE_BEARD_PHOTOS.length;
+
+  // En cada bloque de 12 artículos (como el grid del Home), solo 2 tarjetas muestran foto con envase/crema
+  // (la foto #2 del modelo con barba sosteniendo You Minox y la #18 de aplicación en crema),
+  // y las otras 10 muestran personas reales con barba y cuidado capilar.
+  const posInTwelve = (articleIndex - 1) % 12;
+  let featured: YouMinoxPhoto;
+
+  if (posInTwelve === 0) {
+    // Modelo con barba sosteniendo el tubo de You Minox (#2)
+    featured = YOU_MINOX_PHOTOS[1];
+  } else if (posInTwelve === 6) {
+    // Textura en crema aplicándose junto al manual (#18)
+    featured = YOU_MINOX_PHOTOS[17];
+  } else {
+    const lifestyleIdx = (articleIndex - 1) % totalLifestyle;
+    featured = LIFESTYLE_BEARD_PHOTOS[lifestyleIdx];
+  }
+
+  // En el interior de los 100 artículos sí rotamos todas las 34 fotos profesionales de You Minox
+  const idx2 = (articleIndex - 1) % totalProduct;
+  const idx3 = (articleIndex + 16) % totalProduct;
+
   return {
-    featured: YOU_MINOX_PHOTOS[idx1],
+    featured,
     secondary: YOU_MINOX_PHOTOS[idx2],
     tertiary: YOU_MINOX_PHOTOS[idx3],
   };
