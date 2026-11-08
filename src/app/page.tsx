@@ -237,7 +237,7 @@ export default function HomePage() {
                     href="/blog/"
                     className="rounded-xl border border-emerald-400/40 bg-emerald-950/60 hover:bg-emerald-900/60 px-5 py-3.5 text-xs sm:text-sm font-bold text-emerald-300 transition"
                   >
-                    📚 Explorar 100 Artículos SEO
+                    📚 Explorar 500 Artículos SEO
                   </Link>
                 </div>
               </div>
@@ -980,23 +980,24 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
               <div className="max-w-2xl">
                 <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-emerald-800 mb-3">
-                  📚 Enciclopedia Capilar & Barba • 100 Artículos SEO
+                  📚 Enciclopedia Capilar & Barba • 500 Artículos SEO
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
-                  Artículos y Guías sobre Minoxidil, Barba, Cabello y Cejas
+                  Artículos y Guías sobre Minoxidil, Barba, Cabello, Cejas y Barberías
                 </h2>
                 <p className="mt-3 text-slate-600 text-sm sm:text-base">
-                  Explora nuestras <strong>8 categorías temáticas</strong> y más
-                  de <strong>100 artículos especializados</strong> sobre cómo
-                  poblar tu barba, recuperar entradas capilares, poblar cejas y
-                  elegir un Minoxidil con Notificación Sanitaria DIGEMID.
+                  Explora nuestras <strong>12 categorías temáticas</strong> y{" "}
+                  <strong>500 artículos especializados</strong> sobre cómo
+                  poblar tu barba, recuperar entradas capilares, poblar cejas,
+                  guías por distritos de Lima, ciudades del Perú, países del
+                  mundo y barberías verificadas.
                 </p>
               </div>
               <Link
                 href="/blog/"
                 className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3.5 text-xs sm:text-sm font-extrabold text-white transition hover:bg-primary"
               >
-                Ver los 100 Artículos Completos →
+                Ver los 500 Artículos Completos →
               </Link>
             </div>
 
@@ -1089,7 +1090,7 @@ export default function HomePage() {
                 href="/blog/"
                 className="inline-flex items-center gap-2 rounded-2xl bg-primary px-8 py-4 text-sm font-extrabold text-white shadow-lg transition hover:bg-primary-dark"
               >
-                📚 Ver el Directorio Completo de 100 Artículos y Categorías →
+                📚 Ver el Directorio Completo de 500 Artículos y 12 Categorías →
               </Link>
             </div>
           </div>
@@ -1152,7 +1153,7 @@ export default function HomePage() {
                   href="/blog/"
                   className="rounded-xl border border-white/25 bg-white/10 hover:bg-white/20 px-8 py-4 text-sm font-bold text-white transition"
                 >
-                  Explorar las 100 Guías de Minoxidil
+                  Explorar las 500 Guías de Minoxidil
                 </Link>
               </div>
             </div>

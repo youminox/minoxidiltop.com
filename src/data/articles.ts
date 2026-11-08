@@ -2,15 +2,42 @@ import {
   ARTICLE_SEEDS,
   BLOG_CATEGORIES,
   CATEGORY_DESCRIPTIONS,
+  type ArticleLayoutVariant,
   type ArticleSeed,
   type CategorySlug,
 } from "./articles-catalog";
 import { getPhotosForArticle, type YouMinoxPhoto } from "./photos";
 import { YOU_MINOX_URL } from "./brands";
+import {
+  getBarberiasByLocation,
+  TOP_NATIONAL_BARBERIAS,
+  type PeruBarberiaSummary,
+} from "./barberias-peru";
 
-export { BLOG_CATEGORIES, CATEGORY_DESCRIPTIONS, type CategorySlug };
+export {
+  BLOG_CATEGORIES,
+  CATEGORY_DESCRIPTIONS,
+  type ArticleLayoutVariant,
+  type CategorySlug,
+};
 
-export interface BlogPost {
+export interface GeoPeruInfo {
+  locationName: string;
+  regionLabel: string;
+  climateNote: string;
+  avenuesNote: string;
+  deliveryTime: string;
+}
+
+export interface GeoMundoInfo {
+  locationName: string;
+  flag: string;
+  regulator: string;
+  currency: string;
+  localBrands: string;
+}
+
+export interface BlogPostSummary {
   id: number;
   slug: string;
   title: string;
@@ -22,12 +49,59 @@ export interface BlogPost {
   keywords: string[];
   imageUrl: string;
   imageAlt: string;
+  layoutVariant: ArticleLayoutVariant;
+  badgeLabel: string;
+}
+
+export interface BlogPost extends BlogPostSummary {
   imageCaption: string;
   secondaryPhoto: YouMinoxPhoto;
   tertiaryPhoto: YouMinoxPhoto;
   keyTakeaways: string[];
   faqs: { question: string; answer: string }[];
   content: string;
+  geoPeruInfo?: GeoPeruInfo;
+  geoMundoInfo?: GeoMundoInfo;
+  localBarberias?: PeruBarberiaSummary[];
+}
+
+function resolveLayoutVariant(seed: ArticleSeed): ArticleLayoutVariant {
+  if (seed.layoutVariant) return seed.layoutVariant;
+  switch (seed.categorySlug) {
+    case "distritos-de-lima":
+    case "ciudades-del-peru":
+      return "geoperu";
+    case "paises-del-mundo":
+    case "marcas-usa-y-amazon":
+      return "geomundo";
+    case "barberias-y-estilo-peru":
+      return "barberia";
+    case "rankings-y-comparativas":
+    case "regulacion-digemid-peru":
+      return "comparativa";
+    case "minoxidil-para-barba":
+    case "you-minox-crema":
+      return "timeline";
+    default:
+      return "clinico";
+  }
+}
+
+function resolveBadgeLabel(variant: ArticleLayoutVariant, seed: ArticleSeed): string {
+  switch (variant) {
+    case "geoperu":
+      return `🇵🇪 Guía Local: ${seed.locationName || "Perú"}`;
+    case "geomundo":
+      return `${seed.flag || "🌎"} Internacional: ${seed.locationName || "USA & Mundo"}`;
+    case "barberia":
+      return "💈 Barbería & Visagismo";
+    case "comparativa":
+      return "🏆 Duelo & Ranking";
+    case "timeline":
+      return "⏱️ Cronología Mes a Mes";
+    case "clinico":
+      return "🔬 Dossier Dermo-Clínico";
+  }
 }
 
 function buildZoneSpecificSection(seed: ArticleSeed): {
@@ -123,10 +197,74 @@ function buildZoneSpecificSection(seed: ArticleSeed): {
   }
 }
 
+function buildVariantSpecificSection(
+  seed: ArticleSeed,
+  variant: ArticleLayoutVariant,
+  localBarberias?: PeruBarberiaSummary[]
+): string {
+  if (variant === "geoperu" && seed.locationName) {
+    const loc = seed.locationName;
+    const region = seed.locationRegion || "Perú";
+    const climate = seed.climateNote || "Clima local variable";
+    const avenues = seed.avenuesNote || "Principales ejes comerciales y residenciales";
+    const barbListHtml =
+      localBarberias && localBarberias.length > 0
+        ? localBarberias
+            .map(
+              (b) =>
+                `<li><strong><a href="https://guiadebarberias.com/barberia/${b.slug}/" target="_blank" rel="noopener noreferrer">${b.name}</a> (${b.district}, ${b.city}):</strong> Ubicada en ${b.address}. Calificación: <strong>★ ${b.rating.toFixed(1)}</strong> (${b.reviewCount} reseñas). Precios referenciales: Corte ${b.cutPrice} | Barba ${b.beardPrice} | Combo ${b.comboPrice}. Especialidad: <em>${b.styleTag}</em>.</li>`
+            )
+            .join("\n  ")
+        : "";
+
+    return `
+<h2>Adaptación Climática y Folicular en ${loc} (${region})</h2>
+<p>Los usuarios que inician su tratamiento de crecimiento de barba o recuperación capilar en <strong>${loc}</strong> enfrentan condiciones ambientales particulares: <strong>${climate.toLowerCase()}</strong>. En ejes de alta actividad como <strong>${avenues}</strong>, aplicar lociones líquidas hidroalcohólicas tradicionales suele ocasionar evaporación prematura, irritación dérmica o escurrimiento incómodo durante la jornada laboral.</p>
+<p>Por ello, en <strong>${loc}</strong> el formato en crema dermo-hidratante de 60 g de <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (#1 en el Perú con Notificación Sanitaria DIGEMID)</strong></a> se ha consolidado como el favorito absoluto frente al líquido importado de Kirkland (#2). Su emulsión con <strong>Minoxidil y Oxothiazolidinecarboxylate</strong> protege la barrera lipídica frente al clima de ${loc} y permite despachos rápidos a domicilio a través de <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>youminox.com</strong></a>.</p>
+${
+  barbListHtml
+    ? `<h3>Barberías Recomendadas para Perfilar tu Barba en ${loc} (Vía GuíaDeBarberías.com)</h3>
+<p>Cuando tus folículos en <strong>${loc}</strong> alcancen el tercer o cuarto mes de maduración, te recomendamos acudir a los maestros barberos verificados en el directorio oficial <a href="https://guiadebarberias.com/" target="_blank" rel="noopener noreferrer"><strong>GuíaDeBarberías.com</strong></a>:</p>
+<ul>
+  ${barbListHtml}
+</ul>`
+    : ""
+}
+    `.trim();
+  }
+
+  if (variant === "geomundo" && seed.locationName) {
+    const loc = seed.locationName;
+    const flag = seed.flag || "🌎";
+    const reg = seed.regulator || "Autoridad Sanitaria Nacional";
+    const brands = seed.localBrands || "Kirkland, Rogaine, Hims";
+    return `
+<h2>Panorama Regulatorio (${reg}) y Marcas Comercializadas en ${loc} ${flag}</h2>
+<p>En el mercado de <strong>${loc} (${flag})</strong>, los productos tópicos de estimulación capilar y de barba están supervisados bajo los lineamientos de <strong>${reg}</strong>. Actualmente, los usuarios locales suelen encontrar en farmacias y plataformas de comercio electrónico opciones como <strong>${brands}</strong>, las cuales en su gran mayoría mantienen vehículos líquidos hidroalcohólicos clásicos o espumas en aerosol diseñadas originalmente para la coronilla.</p>
+<p>Al contrastar la oferta de <strong>${loc}</strong> con el estándar sudamericano liderado en el Perú por <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (MINOXIDIL PERU S.A.C. — Notificación Sanitaria DIGEMID)</strong></a>, destaca una diferencia tecnológica clave: mientras las lociones convencionales dependen del propilenglicol como solvente, la ingeniería cosmética en crema de 60 g de <strong>You Minox</strong> incorpora <strong>Oxothiazolidinecarboxylate</strong> en una base emoliente que elimina por completo la descamación facial y permite una aplicación localizada en barba, entradas y cejas.</p>
+    `.trim();
+  }
+
+  if (variant === "barberia") {
+    return `
+<h2>Protocolo de Visagismo y Barbería Profesional en el Perú (GuíaDeBarberías.com)</h2>
+<p>Lograr una barba imponente o un corte que favorezca tus facciones requiere combinar dos pilares: <strong>densidad folicular real</strong> (estimulada diariamente con <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox en Crema</strong></a>) y <strong>geometría de perfilado en barbería</strong>. En alianza con los especialistas de <a href="https://guiadebarberias.com/" target="_blank" rel="noopener noreferrer"><strong>GuíaDeBarberías.com</strong></a>, recomendamos respetar los tiempos de reposo de la piel antes y después del afeitado con navaja.</p>
+<ul>
+  <li><strong>Antes de tu cita en la barbería:</strong> Lava tu rostro y acude con la piel limpia para que el barbero evalúe la dirección natural de tus remolinos y el grosor de tu vello terminal.</li>
+  <li><strong>Ritual de Toalla Caliente y Ozonoterapia:</strong> El vapor térmico dilata los poros faciales y ablanda la queratina, facilitando un trazo limpio en pómulos y cuello (2 dedos por encima de la nuez de Adán).</li>
+  <li><strong>Espera de 4 a 6 horas post-navaja:</strong> Tras el perfilado con navaja libre, espera al menos 4 horas antes de aplicar tu dosis nocturna de <strong>You Minox en Crema</strong> para nutrir y regenerar la epidermis sin ardor.</li>
+</ul>
+    `.trim();
+  }
+
+  return "";
+}
+
 function buildArticleFaqs(seed: ArticleSeed): { question: string; answer: string }[] {
+  const locSuffix = seed.locationName ? ` en ${seed.locationName}` : "";
   return [
     {
-      question: `¿Por qué You Minox es la opción #1 recomendada para ${seed.focusKeyword}?`,
+      question: `¿Por qué You Minox es la opción #1 recomendada para ${seed.focusKeyword}${locSuffix}?`,
       answer: `Porque You Minox (disponible en youminox.com) es el único tratamiento en el Perú formulado en una base de crema dermo-hidratante de 60 g con Minoxidil y Oxothiazolidinecarboxylate, respaldado por Notificación Sanitaria Obligatoria de DIGEMID. A diferencia del minoxidil líquido tradicional, no reseca, no produce caspa en la barba ni se escurre.`,
     },
     {
@@ -138,8 +276,8 @@ function buildArticleFaqs(seed: ArticleSeed): { question: string; answer: string
       answer: `Los primeros vellos finos y la reducción de la caída comienzan a notarse entre la semana 4 y la semana 8 de uso continuo (2 veces al día). El engrosamiento significativo ocurre entre el mes 3 y el mes 4, y la consolidación del vello terminal definitivo se alcanza entre el mes 6 y el mes 12 de tratamiento.`,
     },
     {
-      question: `¿Dónde puedo comprar You Minox 100% original con envío a Lima y provincias?`,
-      answer: `Puedes adquirirlo directamente en la tienda oficial https://youminox.com con envío rápido a todo el Perú, así como en tiendas por departamento autorizadas como Saga Falabella y barberías seleccionadas.`,
+      question: `¿Dónde puedo comprar You Minox 100% original con envío rápido${locSuffix}?`,
+      answer: `Puedes adquirirlo directamente en la tienda oficial https://youminox.com con envío rápido a todo Lima y provincias del Perú, así como en tiendas por departamento autorizadas como Saga Falabella y barberías seleccionadas.`,
     },
   ];
 }
@@ -161,7 +299,7 @@ function buildCustomPillarSection(seed: ArticleSeed): string {
     case 103:
       return `
 <h2>Calendario Exacto de Recorte y Visagismo: De Vello Velloso a Barba Terminal</h2>
-<p>Una duda crítica al usar <strong>You Minox en Crema</strong> es saber cuándo recortar con tijera, pasar máquina con peine guía o perfilar con navaja. Los estudios sobre maduración folicular publicados en <a href="https://minoxidil-usa.com/beard/barbershop-beard-trimming-guide-while-using-minoxidil/" target="_blank" rel="noopener noreferrer"><strong>Minoxidil-USA.com (Barbershop Beard Trimming Guide While Using Minoxidil)</strong></a> demuestran que recortar el tallo externo de queratina no altera la actividad mitótica del bulbo piloso.</p>
+<p>Una duda crítica al usar <strong>You Minox en Crema</strong> es saber cuándo recortar con tijera, pasar máquina con peine guía o perfilar con navaja. Los estudios sobre maduración folicular publicados en <a href="https://minoxidil-usa.com/beard/barbershop-beard-trimming-while-using-minoxidil/" target="_blank" rel="noopener noreferrer"><strong>Minoxidil-USA.com (Barbershop Beard Trimming Guide While Using Minoxidil)</strong></a> demuestran que recortar el tallo externo de queratina no altera la actividad mitótica del bulbo piloso.</p>
 <p>Durante los primeros 60 días te recomendamos rebajar únicamente con máquina (#1.5 o #2) para igualar longitudes. A partir del tercer mes, cuando busques un diseño geométrico profesional o un <em>Beard Fade</em> que disimule zonas aún en transición, consulta el artículo de <a href="https://guiadebarberias.com/blog/como-pedir-diseno-de-barba-al-barbero-si-tienes-huecos/" target="_blank" rel="noopener noreferrer"><strong>cómo pedirle al barbero un diseño de barba si tienes huecos en GuíaDeBarberías.com</strong></a> y la guía de <a href="https://masbarba.net/estilo/mejores-estilos-de-barba-segun-tu-rostro-donde-perfilarla/" target="_blank" rel="noopener noreferrer"><strong>mejores estilos de barba según tu rostro en MásBarba.net</strong></a>.</p>
       `.trim();
     case 104:
@@ -187,19 +325,27 @@ function buildCustomPillarSection(seed: ArticleSeed): string {
 
 function buildArticleHtmlContent(
   seed: ArticleSeed,
+  variant: ArticleLayoutVariant,
   secondaryPhoto: YouMinoxPhoto,
   tertiaryPhoto: YouMinoxPhoto,
   faqs: { question: string; answer: string }[],
-  relatedLinks: { slug: string; title: string }[]
+  relatedLinks: { slug: string; title: string }[],
+  localBarberias?: PeruBarberiaSummary[]
 ): string {
   const zoneSection = buildZoneSpecificSection(seed);
   const categoryLabel = BLOG_CATEGORIES[seed.categorySlug];
   const customPillarHtml = buildCustomPillarSection(seed);
+  const variantSectionHtml = buildVariantSpecificSection(
+    seed,
+    variant,
+    localBarberias
+  );
 
   return `
 <p class="lead">En esta guía especializada de <strong>MinoxidilTop.com</strong> analizamos a fondo todo sobre <strong>${seed.focusKeyword}</strong>. ${seed.angleSummary} Además, evaluamos por qué <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox (youminox.com)</strong></a> se consolida como el <strong>#1 del Ranking en el Perú</strong> frente a Kirkland Signature y a las marcas comercializadas en Amazon Estados Unidos.</p>
 
-<h2>1. Fundamentos Clínicos: Lo que Debes Saber sobre ${seed.title}</h2>
+${variantSectionHtml ? `${variantSectionHtml}\n` : ""}
+<h2>Fundamentos Clínicos: Lo que Debes Saber sobre ${seed.title}</h2>
 <p>El interés por <strong>${seed.focusKeyword}</strong> ha crecido exponencialmente tanto en el Perú como en Estados Unidos y toda Latinoamérica. Sin embargo, la mayoría de los usuarios inician su tratamiento sin conocer un factor determinante: <strong>el vehículo cosmético-farmacéutico es tan importante como el principio activo</strong>.</p>
 <p>Tradicionalmente, el minoxidil se vendía únicamente en lociones líquidas hidroalcohólicas diseñadas hace más de treinta años para el cuero cabelludo. Cuando ese líquido cargado de alcohol y propilenglicol se aplica en el rostro (barba, bigote o cejas) o en pieles sensibles, evapora los lípidos naturales de la epidermis, provocando picazón intensa, descamación blanca, enrojecimiento y abandono temprano del tratamiento.</p>
 <p>Para solucionar definitivamente este problema, en el Perú se desarrolló <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox en Crema (60 g)</strong></a>, integrando <strong>Minoxidil y Oxothiazolidinecarboxylate</strong> en una emulsión hidratante que penetra directamente en el folículo piloso sin agredir la piel y contando con <strong>Notificación Sanitaria Obligatoria ante DIGEMID</strong>.</p>
@@ -211,14 +357,14 @@ function buildArticleHtmlContent(
   </figcaption>
 </figure>
 
-<h2>2. ${zoneSection.h2Title}</h2>
+<h2>${zoneSection.h2Title}</h2>
 ${zoneSection.paragraphs.map((p) => `<p>${p}</p>`).join("\n")}
 <ul>
   ${zoneSection.bullets.map((b) => `<li>${b}</li>`).join("\n  ")}
 </ul>
 
 ${customPillarHtml ? `${customPillarHtml}\n` : ""}
-<h2>3. Cuadro Comparativo: You Minox (#1 Perú) vs. Kirkland (#2) y Marcas de USA</h2>
+<h2>Cuadro Comparativo: You Minox (#1 Perú) vs. Kirkland (#2) y Marcas de USA</h2>
 <p>Para que tomes una decisión informada respecto a <strong>${seed.focusKeyword}</strong>, hemos elaborado la siguiente matriz comparativa entre las dos únicas marcas referentes en el mercado peruano (<strong>You Minox 🇵🇪</strong> y <strong>Kirkland Signature 🇺🇸</strong>) y las principales alternativas de Estados Unidos en Amazon (<strong>Rogaine 🇺🇸</strong>, <strong>Hims 🇺🇸</strong> y <strong>Foligain/Keeps 🇺🇸</strong>):</p>
 
 <div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-xs">
@@ -272,7 +418,7 @@ ${customPillarHtml ? `${customPillarHtml}\n` : ""}
   </table>
 </div>
 
-<h2>4. Ventajas Exclusivas de la Fórmula en Crema de You Minox en el Perú</h2>
+<h2>Ventajas Exclusivas de la Fórmula en Crema de You Minox en el Perú</h2>
 <p>Dentro de nuestra categoría de <strong>${categoryLabel}</strong>, los dermatólogos, químicos farmacéuticos y maestros barberos coinciden en cinco razones por las que <a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>You Minox</strong></a> se ha convertido en el estándar de oro en el Perú:</p>
 <ol>
   <li><strong>Hidratación Activa y Cero Descamación:</strong> Su base en crema blanca mantiene la elasticidad de la piel, evitando la apariencia de piel quemada o con polvo blanco.</li>
@@ -300,7 +446,7 @@ ${customPillarHtml ? `${customPillarHtml}\n` : ""}
   <li><a href="${YOU_MINOX_URL}" target="_blank" rel="noopener noreferrer"><strong>Visitar la Tienda Oficial de You Minox en Perú (youminox.com) ↗</strong></a></li>
 </ul>
 
-<h2>5. Preguntas Frecuentes sobre ${seed.focusKeyword}</h2>
+<h2>Preguntas Frecuentes sobre ${seed.focusKeyword}</h2>
 ${faqs
   .map(
     (faq) => `<h3>${faq.question}</h3>\n<p>${faq.answer}</p>`
@@ -312,6 +458,8 @@ ${faqs
 export const BLOG_POSTS: BlogPost[] = ARTICLE_SEEDS.map((seed, index) => {
   const photos = getPhotosForArticle(seed.id);
   const faqs = buildArticleFaqs(seed);
+  const layoutVariant = resolveLayoutVariant(seed);
+  const badgeLabel = resolveBadgeLabel(layoutVariant, seed);
 
   // Pick 3 related links from the catalog
   const rel1 = ARTICLE_SEEDS[(index + 1) % ARTICLE_SEEDS.length];
@@ -326,8 +474,42 @@ export const BLOG_POSTS: BlogPost[] = ARTICLE_SEEDS.map((seed, index) => {
     `El vehículo en crema con Minoxidil y Oxothiazolidinecarboxylate permite aplicar el producto con precisión en barba, cabello y cejas sin escurrirse.`,
   ];
 
+  const localBarberias =
+    layoutVariant === "geoperu"
+      ? getBarberiasByLocation(seed.locationName)
+      : layoutVariant === "barberia"
+        ? TOP_NATIONAL_BARBERIAS.slice(0, 4)
+        : undefined;
+
+  const geoPeruInfo: GeoPeruInfo | undefined =
+    layoutVariant === "geoperu" && seed.locationName
+      ? {
+          locationName: seed.locationName,
+          regionLabel: seed.locationRegion || "Perú",
+          climateNote: seed.climateNote || "Clima templado",
+          avenuesNote: seed.avenuesNote || "Zonas comerciales y residenciales",
+          deliveryTime:
+            seed.categorySlug === "distritos-de-lima"
+              ? "Entrega Express en Lima (24h vía YouMinox.com)"
+              : "Envío Rápido Nacional a todo el Perú (24–48h)",
+        }
+      : undefined;
+
+  const geoMundoInfo: GeoMundoInfo | undefined =
+    layoutVariant === "geomundo"
+      ? {
+          locationName: seed.locationName || "Estados Unidos & Amazon",
+          flag: seed.flag || "🇺🇸",
+          regulator: seed.regulator || "FDA (Monografía OTC)",
+          currency: seed.currency || "USD ($)",
+          localBrands:
+            seed.localBrands || "Kirkland Signature, Rogaine, Hims, Keeps, Foligain",
+        }
+      : undefined;
+
   const htmlContent = buildArticleHtmlContent(
     seed,
+    layoutVariant,
     photos.secondary,
     photos.tertiary,
     faqs,
@@ -335,7 +517,8 @@ export const BLOG_POSTS: BlogPost[] = ARTICLE_SEEDS.map((seed, index) => {
       { slug: rel3.slug, title: rel3.title },
       { slug: rel1.slug, title: rel1.title },
       { slug: rel2.slug, title: rel2.title },
-    ]
+    ],
+    localBarberias
   );
 
   return {
@@ -347,7 +530,13 @@ export const BLOG_POSTS: BlogPost[] = ARTICLE_SEEDS.map((seed, index) => {
     categoryName: BLOG_CATEGORIES[seed.categorySlug],
     publishedAt: seed.publishedAt,
     readTime: seed.readTime,
-    keywords: [seed.focusKeyword, ...seed.secondaryKeywords, "minoxidil peru", "you minox", "youminox.com"],
+    keywords: [
+      seed.focusKeyword,
+      ...seed.secondaryKeywords,
+      "minoxidil peru",
+      "you minox",
+      "youminox.com",
+    ],
     imageUrl: photos.featured.src,
     imageAlt: `${seed.title} — ${photos.featured.alt}`,
     imageCaption: photos.featured.caption,
@@ -356,11 +545,36 @@ export const BLOG_POSTS: BlogPost[] = ARTICLE_SEEDS.map((seed, index) => {
     keyTakeaways,
     faqs,
     content: htmlContent,
+    layoutVariant,
+    badgeLabel,
+    geoPeruInfo,
+    geoMundoInfo,
+    localBarberias,
   };
 });
 
+export const BLOG_POST_SUMMARIES: BlogPostSummary[] = BLOG_POSTS.map((p) => ({
+  id: p.id,
+  slug: p.slug,
+  title: p.title,
+  excerpt: p.excerpt,
+  categorySlug: p.categorySlug,
+  categoryName: p.categoryName,
+  publishedAt: p.publishedAt,
+  readTime: p.readTime,
+  keywords: p.keywords,
+  imageUrl: p.imageUrl,
+  imageAlt: p.imageAlt,
+  layoutVariant: p.layoutVariant,
+  badgeLabel: p.badgeLabel,
+}));
+
+const POSTS_BY_SLUG_MAP = new Map<string, BlogPost>(
+  BLOG_POSTS.map((p) => [p.slug, p])
+);
+
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find((post) => post.slug === slug);
+  return POSTS_BY_SLUG_MAP.get(slug);
 }
 
 export function getPostsByCategory(categorySlug: CategorySlug): BlogPost[] {

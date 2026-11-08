@@ -3,22 +3,22 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogListClient from "./BlogListClient";
-import { BLOG_POSTS } from "@/data/articles";
+import { BLOG_POST_SUMMARIES } from "@/data/articles";
 import { SITE_URL, YOU_MINOX_URL } from "@/data/brands";
 
 export const metadata: Metadata = {
   title:
-    "100 Artículos y Guías sobre Minoxidil, Barba, Cabello y Cejas | MinoxidilTop.com",
+    "500 Artículos y Guías sobre Minoxidil, Barba, Cabello, Cejas y Barberías | MinoxidilTop.com",
   description:
-    "Biblioteca completa de 100 artículos especializados en Minoxidil para barba, cabello y cejas, comparativas entre You Minox (#1 en Perú) y Kirkland (#2), marcas de Amazon USA y regulación DIGEMID.",
+    "Enciclopedia completa de 500 artículos especializados en Minoxidil para barba, cabello y cejas, guías por distritos de Lima, ciudades del Perú, países del mundo, barberías (GuíaDeBarberías.com) y comparativas entre You Minox (#1 Perú) y Kirkland (#2).",
   alternates: {
     canonical: `${SITE_URL}/blog/`,
   },
   openGraph: {
     title:
-      "100 Artículos y Guías sobre Minoxidil, Barba, Cabello y Cejas | MinoxidilTop.com",
+      "500 Artículos y Guías sobre Minoxidil, Barba, Cabello y Barberías | MinoxidilTop.com",
     description:
-      "Explora nuestras 100 guías clínicas y comparativas sobre los mejores Minoxidil de Perú (You Minox #1 y Kirkland #2) y Estados Unidos.",
+      "Explora nuestras 500 guías clínicas, geolocalizadas y comparativas sobre los mejores Minoxidil de Perú (You Minox #1 y Kirkland #2), Estados Unidos y el mundo.",
     url: `${SITE_URL}/blog/`,
     type: "website",
     locale: "es_PE",
@@ -35,14 +35,27 @@ export default function BlogIndexPage() {
           {/* Header Banner */}
           <div className="text-center max-w-3xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-4 py-1 text-xs font-extrabold text-primary mb-4">
-              <span>📚 Enciclopedia Oficial • {BLOG_POSTS.length} Guías Verificadas</span>
+              <span>
+                📚 Enciclopedia Oficial • {BLOG_POST_SUMMARIES.length} Guías Verificadas en 12 Categorías
+              </span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
               Centro de Artículos sobre{" "}
-              <span className="text-primary">Minoxidil, Barba y Cabello</span>
+              <span className="text-primary">
+                Minoxidil, Barba, Cabello y Barberías
+              </span>
             </h1>
             <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
-              Explora nuestras <strong>100 guías especializadas</strong> divididas en 8 categorías: comparativas del Ranking Top 5, crecimiento de barba y cejas sin irritación, marcas de Amazon USA, regulación sanitaria DIGEMID en Perú y todo sobre{" "}
+              Explora nuestras <strong>{BLOG_POST_SUMMARIES.length} guías especializadas</strong> divididas en 12 categorías con 6 formatos editoriales distintos: distritos de Lima, ciudades del Perú, países del mundo, visagismo en barberías (vía{" "}
+              <a
+                href="https://guiadebarberias.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-gray-900 underline"
+              >
+                GuíaDeBarberías.com
+              </a>
+              ), marcas de Amazon USA y todo sobre{" "}
               <a
                 href={YOU_MINOX_URL}
                 target="_blank"
@@ -71,7 +84,7 @@ export default function BlogIndexPage() {
             </div>
           </div>
 
-          <BlogListClient />
+          <BlogListClient posts={BLOG_POST_SUMMARIES} />
         </div>
       </main>
       <Footer />

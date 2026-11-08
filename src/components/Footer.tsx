@@ -185,7 +185,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link href="/blog/" className="hover:text-slate-300">
-              100 Artículos SEO
+              500 Artículos SEO
             </Link>
             <span>·</span>
             <Link href="/sitemap.xml" className="hover:text-slate-300">

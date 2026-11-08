@@ -11,7 +11,7 @@ const MAIN_NAV = [
   { label: "⚡ Comparador 1 vs 1", href: "/#comparador-interactivo" },
   { label: "🇺🇸 Marcas USA & Amazon", href: "/#marcas-mundo" },
   { label: "🧔 Evolución y Barba", href: "/#galeria-you-minox" },
-  { label: "📚 100 Artículos y Guías", href: "/blog/" },
+  { label: "📚 500 Artículos y Guías", href: "/blog/" },
 ];
 
 export default function Header() {
@@ -91,7 +91,7 @@ export default function Header() {
             href="/blog/"
             className="rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-extrabold text-slate-800 transition hover:border-primary hover:text-primary"
           >
-            📚 Ver 100 Guías
+            📚 Ver 500 Guías
           </Link>
           <a
             href={YOU_MINOX_URL}
@@ -153,7 +153,7 @@ export default function Header() {
 
           <div className="pt-2 border-t border-slate-100">
             <p className="px-2 mb-2 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
-              Categorías de Artículos (100 Guías)
+              Categorías de Artículos (500 Guías)
             </p>
             <div className="grid grid-cols-2 gap-1.5">
               {Object.entries(BLOG_CATEGORIES).map(([slug, label]) => (

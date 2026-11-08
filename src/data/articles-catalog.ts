@@ -1,41 +1,67 @@
+import { EXTRA_ARTICLE_SEEDS } from "./articles-extra";
+
 export type CategorySlug =
   | "rankings-y-comparativas"
+  | "distritos-de-lima"
+  | "ciudades-del-peru"
+  | "barberias-y-estilo-peru"
+  | "marcas-usa-y-amazon"
+  | "paises-del-mundo"
   | "minoxidil-para-barba"
   | "minoxidil-para-cabello"
   | "minoxidil-para-cejas-y-piel"
   | "you-minox-crema"
-  | "marcas-usa-y-amazon"
-  | "regulacion-digemid-peru"
-  | "cuidado-barba-y-rutinas";
+  | "cuidado-barba-y-rutinas"
+  | "regulacion-digemid-peru";
+
+export type ArticleLayoutVariant =
+  | "geoperu"
+  | "geomundo"
+  | "comparativa"
+  | "timeline"
+  | "clinico"
+  | "barberia";
 
 export const BLOG_CATEGORIES: Record<CategorySlug, string> = {
-  "rankings-y-comparativas": "Rankings y Comparativas",
-  "minoxidil-para-barba": "Minoxidil para Barba",
-  "minoxidil-para-cabello": "Minoxidil para Cabello y Alopecia",
-  "minoxidil-para-cejas-y-piel": "Cejas y Piel Sensible",
-  "you-minox-crema": "Especial You Minox en Crema",
-  "marcas-usa-y-amazon": "Marcas de USA y Amazon",
-  "regulacion-digemid-peru": "Notificación Sanitaria DIGEMID",
-  "cuidado-barba-y-rutinas": "Cuidado de Barba y Rutinas",
+  "rankings-y-comparativas": "🏆 Rankings y Comparativas",
+  "distritos-de-lima": "📍 Distritos de Lima y Barberías",
+  "ciudades-del-peru": "🇵🇪 Ciudades del Perú y Barberías",
+  "barberias-y-estilo-peru": "💈 Barberías y Visagismo en Perú",
+  "marcas-usa-y-amazon": "🇺🇸 Estados Unidos y Amazon",
+  "paises-del-mundo": "🌎 Minoxidil y Barberías por Países",
+  "minoxidil-para-barba": "🧔 Crecimiento de Barba y Bigote",
+  "minoxidil-para-cabello": "💆‍♂️ Cabello, Entradas y Alopecia",
+  "minoxidil-para-cejas-y-piel": "✨ Cejas y Piel Sensible",
+  "you-minox-crema": "🇵🇪 Especial You Minox en Crema",
+  "cuidado-barba-y-rutinas": "🔬 Ciencia Folicular y Rutinas",
+  "regulacion-digemid-peru": "🛡️ Regulación DIGEMID y Compra Segura",
 };
 
 export const CATEGORY_DESCRIPTIONS: Record<CategorySlug, string> = {
   "rankings-y-comparativas":
     "Rankings actualizados y cuadros comparativos entre You Minox (#1 en Perú), Kirkland Signature (#2) y las principales marcas de Estados Unidos y Amazon.",
+  "distritos-de-lima":
+    "Guías geolocalizadas para los 43 distritos de Lima y Callao: impacto de la humedad costera, envío rápido de You Minox con Registro DIGEMID y directorio de las mejores barberías locales.",
+  "ciudades-del-peru":
+    "Guías regionales en Arequipa, Trujillo, Cusco, Piura, Chiclayo, Huancayo, Ica, Tacna, Iquitos y todo el Perú: cómo adaptar tu rutina de Minoxidil al clima de costa, sierra o selva y top barberías.",
+  "barberias-y-estilo-peru":
+    "Manuales de visagismo masculino, estilos de barba según tu rostro, cortes para disimular entradas y rituales de toalla caliente junto al ranking oficial de GuíaDeBarberías.com.",
+  "marcas-usa-y-amazon":
+    "Análisis a fondo de los minoxidil comercializados en Estados Unidos y Amazon.com (Kirkland, Rogaine, Hims, Keeps, Foligain, Equate) y guías por ciudades de EE. UU.",
+  "paises-del-mundo":
+    "Comparativa internacional de marcas de Minoxidil, agencias reguladoras (COFEPRIS, INVIMA, ISP, ANMAT, AEMPS, ANVISA) y cultura de barbería en América, Europa y Asia.",
   "minoxidil-para-barba":
-    "Guías clínicas y prácticas para poblar la barba desde cero, cerrar huecos en mejillas y candado, y lograr vello terminal denso sin irritación.",
+    "Guías clínicas y cronológicas mes a mes para poblar la barba desde cero, cerrar huecos en mejillas y candado, y lograr vello terminal denso sin irritación.",
   "minoxidil-para-cabello":
-    "Tratamientos efectivos para entradas capilares, coronilla, alopecia androgenética y fortalecimiento del folículo piloso.",
+    "Tratamientos efectivos para entradas capilares, coronilla, escala Norwood, alopecia androgenética y fortalecimiento del folículo piloso.",
   "minoxidil-para-cejas-y-piel":
     "Cómo aplicar Minoxidil en crema de forma segura en cejas y pieles sensibles sin sufrir dermatitis, picazón ni descamación por alcohol.",
   "you-minox-crema":
-    "Todo sobre You Minox (youminox.com): su fórmula en crema con Oxothiazolidinecarboxylate, modo de uso, puntos de venta y ventajas frente al líquido.",
-  "marcas-usa-y-amazon":
-    "Análisis a fondo de los minoxidil comercializados en Estados Unidos y Amazon.com (Kirkland, Rogaine, Hims, Keeps, Foligain, Equate y más).",
+    "Todo sobre You Minox (youminox.com): su fórmula en crema de 60 g con Oxothiazolidinecarboxylate, modo de uso, puntos de venta y ventajas frente al líquido.",
+  "cuidado-barba-y-rutinas":
+    "Rutinas complementarias con dermaroller, biotina, cepillo de cerdas de jabalí, limpieza facial, protector solar y hábitos para maximizar el crecimiento folicular.",
   "regulacion-digemid-peru":
     "Importancia de la Notificación Sanitaria Obligatoria (DIGEMID) en el Perú, cómo identificar productos originales y por qué solo existen dos marcas referentes en el país.",
-  "cuidado-barba-y-rutinas":
-    "Rutinas complementarias con dermaroller, biotina, afeitado, limpieza facial, protector solar y hábitos para maximizar el crecimiento folicular.",
 };
 
 export interface ArticleSeed {
@@ -49,9 +75,18 @@ export interface ArticleSeed {
   targetZone: "barba" | "cabello" | "cejas" | "comparativa" | "regulacion" | "rutina";
   readTime: string;
   publishedAt: string;
+  layoutVariant?: ArticleLayoutVariant;
+  locationName?: string;
+  locationRegion?: string;
+  climateNote?: string;
+  avenuesNote?: string;
+  flag?: string;
+  regulator?: string;
+  currency?: string;
+  localBrands?: string;
 }
 
-export const ARTICLE_SEEDS: ArticleSeed[] = [
+const BASE_ARTICLE_SEEDS: ArticleSeed[] = [
   // ───────────────────────────────────────────────────────────────────────────
   // CATEGORÍA 1: RANKINGS Y COMPARATIVAS (15 Artículos: 1 - 15)
   // ───────────────────────────────────────────────────────────────────────────
@@ -1347,3 +1382,9 @@ export const ARTICLE_SEEDS: ArticleSeed[] = [
     publishedAt: "2026-11-05",
   },
 ];
+
+export const ARTICLE_SEEDS: ArticleSeed[] = [
+  ...BASE_ARTICLE_SEEDS,
+  ...EXTRA_ARTICLE_SEEDS,
+];
+

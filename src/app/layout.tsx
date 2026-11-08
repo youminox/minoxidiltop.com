@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: `%s`,
   },
   description:
-    "Ranking oficial y cuadros comparativos de los mejores Minoxidil en Perú y Estados Unidos (Amazon). #1 You Minox en Crema (con Notificación Sanitaria DIGEMID), #2 Kirkland Signature, #3 Rogaine, #4 Hims y #5 Foligain/Keeps. +100 guías de barba, cabello y cejas.",
+    "Ranking oficial y cuadros comparativos de los mejores Minoxidil en Perú y Estados Unidos (Amazon). #1 You Minox en Crema (con Notificación Sanitaria DIGEMID), #2 Kirkland Signature, #3 Rogaine, #4 Hims y #5 Foligain/Keeps. +500 guías de barba, cabello, cejas y barberías.",
   keywords: [
     "mejor minoxidil peru",
     "ranking minoxidil",

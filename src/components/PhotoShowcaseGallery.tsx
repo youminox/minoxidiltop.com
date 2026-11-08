@@ -230,7 +230,7 @@ export default function PhotoShowcaseGallery() {
               ¿Buscas iniciar tu tratamiento sin sufrir picazón, acné ni descamación facial?
             </p>
             <p className="text-xs text-slate-600 mt-0.5">
-              Conoce por qué el formato en crema con Notificación Sanitaria DIGEMID lidera el ranking en Perú o explora nuestras 100 guías clínicas.
+              Conoce por qué el formato en crema con Notificación Sanitaria DIGEMID lidera el ranking en Perú o explora nuestras 500 guías clínicas y geolocalizadas.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
@@ -238,7 +238,7 @@ export default function PhotoShowcaseGallery() {
               href="/blog/"
               className="rounded-xl border border-slate-300 bg-slate-50 px-5 py-2.5 text-xs font-extrabold text-slate-800 transition hover:border-primary hover:text-primary"
             >
-              📚 Explorar las 100 Guías
+              📚 Explorar las 500 Guías
             </Link>
             <a
               href={YOU_MINOX_URL}
