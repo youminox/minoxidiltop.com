@@ -1010,7 +1010,7 @@ export default function HomePage() {
                 return (
                   <Link
                     key={slug}
-                    href={`/blog/?categoria=${slug}`}
+                    href={`/blog/categoria/${slug}/`}
                     className="group rounded-2xl border border-slate-200 bg-slate-50/70 p-5 transition hover:bg-white hover:border-primary hover:shadow-lg flex flex-col justify-between"
                   >
                     <div>

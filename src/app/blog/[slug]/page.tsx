@@ -533,11 +533,27 @@ export default async function BlogSlugPage({ params }: Props) {
     notFound();
   }
 
-  const relatedPosts = BLOG_POSTS.filter(
-    (p) => p.id !== post.id && p.categorySlug === post.categorySlug
-  ).slice(0, 4);
+  const sameCategoryPosts = BLOG_POSTS.filter(
+    (p) => p.categorySlug === post.categorySlug
+  );
+  const currentCatIdx = Math.max(
+    0,
+    sameCategoryPosts.findIndex((p) => p.id === post.id)
+  );
+  const relatedPosts = [1, 2, 3, 4]
+    .map(
+      (offset) =>
+        sameCategoryPosts[(currentCatIdx + offset) % sameCategoryPosts.length]
+    )
+    .filter((p) => p && p.id !== post.id);
 
-  const featuredGuides = BLOG_POSTS.filter((p) => p.id !== post.id).slice(0, 5);
+  const featuredGuides = [5, 19, 43, 89, 137]
+    .map((step) => BLOG_POSTS[(post.id * 7 + step) % BLOG_POSTS.length])
+    .filter(
+      (p, idx, arr) =>
+        p && p.id !== post.id && arr.findIndex((x) => x.id === p.id) === idx
+    )
+    .slice(0, 5);
   const sidebarBarberias =
     post.localBarberias && post.localBarberias.length > 0
       ? post.localBarberias
@@ -639,7 +655,7 @@ export default async function BlogSlugPage({ params }: Props) {
         "@type": "ListItem",
         position: 3,
         name: post.categoryName,
-        item: `${SITE_URL}/blog/?categoria=${post.categorySlug}`,
+        item: `${SITE_URL}/blog/categoria/${post.categorySlug}/`,
       },
       {
         "@type": "ListItem",
@@ -716,7 +732,7 @@ export default async function BlogSlugPage({ params }: Props) {
 
               <div className="mb-6 flex flex-wrap items-center gap-2.5">
                 <Link
-                  href={`/blog/?categoria=${post.categorySlug}`}
+                  href={`/blog/categoria/${post.categorySlug}/`}
                   className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary hover:bg-primary hover:text-white transition"
                 >
                   {post.categoryName}

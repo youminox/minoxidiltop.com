@@ -159,7 +159,7 @@ export default function Header() {
               {Object.entries(BLOG_CATEGORIES).map(([slug, label]) => (
                 <Link
                   key={slug}
-                  href={`/blog/?categoria=${slug}`}
+                  href={`/blog/categoria/${slug}/`}
                   onClick={() => setMobileOpen(false)}
                   className="rounded-lg bg-slate-50 px-2.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-emerald-50 hover:text-primary truncate"
                 >

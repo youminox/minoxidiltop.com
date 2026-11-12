@@ -97,7 +97,7 @@ export default function Footer() {
                 return (
                   <li key={slug}>
                     <Link
-                      href={`/blog/?categoria=${slug}`}
+                      href={`/blog/categoria/${slug}/`}
                       className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center justify-between"
                     >
                       <span>{name}</span>

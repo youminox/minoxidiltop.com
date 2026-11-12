@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
 import {
   BLOG_CATEGORIES,
@@ -13,23 +12,14 @@ import { YOU_MINOX_URL } from "@/data/brands";
 
 const PAGE_SIZE = 24;
 
-function BlogListInner({ posts }: { posts: BlogPostSummary[] }) {
-  const searchParams = useSearchParams();
-  const initialCat = searchParams.get("categoria") || "all";
-  const [selectedCategory, setSelectedCategory] = useState<string>(initialCat);
+export default function BlogListClient({
+  posts,
+}: {
+  posts: BlogPostSummary[];
+}) {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [visibleCount, setVisibleCount] = useState<number>(PAGE_SIZE);
-
-  useEffect(() => {
-    const cat = searchParams.get("categoria");
-    if (cat && BLOG_CATEGORIES[cat as CategorySlug]) {
-      setSelectedCategory(cat);
-      setVisibleCount(PAGE_SIZE);
-    } else if (!cat) {
-      setSelectedCategory("all");
-      setVisibleCount(PAGE_SIZE);
-    }
-  }, [searchParams]);
 
   const filteredPosts = posts.filter((post: BlogPostSummary) => {
     const matchesCat =
@@ -123,11 +113,18 @@ function BlogListInner({ posts }: { posts: BlogPostSummary[] }) {
                 {BLOG_CATEGORIES[selectedCategory as CategorySlug]}:
               </strong>{" "}
               {CATEGORY_DESCRIPTIONS[selectedCategory as CategorySlug]}{" "}
+              <Link
+                href={`/blog/categoria/${selectedCategory}/`}
+                className="font-extrabold text-slate-900 underline ml-1"
+              >
+                Ir a la página oficial de esta categoría →
+              </Link>
+              {" · "}
               <a
                 href={YOU_MINOX_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-extrabold text-primary underline ml-1"
+                className="font-extrabold text-primary underline"
               >
                 Visitar YouMinox.com ↗
               </a>
@@ -244,23 +241,5 @@ function BlogListInner({ posts }: { posts: BlogPostSummary[] }) {
         </>
       )}
     </div>
-  );
-}
-
-export default function BlogListClient({
-  posts,
-}: {
-  posts: BlogPostSummary[];
-}) {
-  return (
-    <Suspense
-      fallback={
-        <div className="py-20 text-center text-gray-400">
-          Cargando las 500 guías especializadas...
-        </div>
-      }
-    >
-      <BlogListInner posts={posts} />
-    </Suspense>
   );
 }
