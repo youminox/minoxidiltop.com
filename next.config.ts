@@ -18,34 +18,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/blog/",
-        has: [
-          {
-            type: "query",
-            key: "categoria",
-            value: "(?<categoria>.+)",
-          },
-        ],
-        destination: "/blog/categoria/:categoria/",
-        permanent: true,
-      },
-      {
-        source: "/blog",
-        has: [
-          {
-            type: "query",
-            key: "categoria",
-            value: "(?<categoria>.+)",
-          },
-        ],
-        destination: "/blog/categoria/:categoria/",
-        permanent: true,
-      },
-    ];
-  },
+  // Las redirecciones de ?categoria=X se gestionan en src/proxy.ts para
+  // eliminar el query string (los redirects() de Next.js lo reenvían al destino).
 };
 
 export default nextConfig;
