@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getAmazonContextForCategory } from "@/lib/amazon";
 import {
   BLOG_CATEGORIES,
   CATEGORY_DESCRIPTIONS,
@@ -64,6 +66,7 @@ export default async function BlogCategoryPage({ params }: Props) {
   const categoryDescription = CATEGORY_DESCRIPTIONS[categoria as CategorySlug];
   const posts = getPostsByCategory(categoria as CategorySlug);
   const canonicalUrl = `${SITE_URL}/blog/categoria/${categoria}/`;
+  const amazonContext = getAmazonContextForCategory(categoria);
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -271,6 +274,15 @@ export default async function BlogCategoryPage({ params }: Props) {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-14">
+            <AmazonAffiliateBox
+              variant="showcase"
+              sectionTitle={amazonContext.sectionTitle}
+              sectionSubtitle={amazonContext.sectionSubtitle}
+              products={amazonContext.products}
+            />
           </div>
         </div>
       </main>

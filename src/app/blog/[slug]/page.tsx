@@ -4,6 +4,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import YouMinoxSpotlight from "@/components/YouMinoxSpotlight";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getContextualAmazonProducts } from "@/lib/amazon";
 import { BLOG_POSTS, getPostBySlug, type BlogPost } from "@/data/articles";
 import { TOP_NATIONAL_BARBERIAS } from "@/data/barberias-peru";
 import {
@@ -533,6 +535,12 @@ export default async function BlogSlugPage({ params }: Props) {
     notFound();
   }
 
+  const amazonContext = getContextualAmazonProducts(
+    post.slug,
+    post.categorySlug,
+    post.title
+  );
+
   const sameCategoryPosts = BLOG_POSTS.filter(
     (p) => p.categorySlug === post.categorySlug
   );
@@ -839,6 +847,14 @@ export default async function BlogSlugPage({ params }: Props) {
               {/* Mid-Article You Minox Spotlight Card */}
               <YouMinoxSpotlight variant="article" />
 
+              {/* Mid-Article Contextual Amazon Product Box */}
+              <AmazonAffiliateBox
+                variant="inline"
+                sectionTitle={amazonContext.sectionTitle}
+                sectionSubtitle={amazonContext.sectionSubtitle}
+                products={amazonContext.products}
+              />
+
               {/* Content Part 2 */}
               {secondHalfContent && (
                 <div
@@ -846,6 +862,14 @@ export default async function BlogSlugPage({ params }: Props) {
                   dangerouslySetInnerHTML={{ __html: secondHalfContent }}
                 />
               )}
+
+              {/* Bottom 3-Product Amazon Affiliate Showcase */}
+              <AmazonAffiliateBox
+                variant="showcase"
+                sectionTitle={amazonContext.sectionTitle}
+                sectionSubtitle={amazonContext.sectionSubtitle}
+                products={amazonContext.products}
+              />
 
               {/* CTA Banner inside article */}
               <div className="mt-14 rounded-2xl bg-gradient-to-br from-primary-dark to-primary p-8 sm:p-10 text-center text-white shadow-lg">
@@ -975,6 +999,14 @@ export default async function BlogSlugPage({ params }: Props) {
               <div className="sticky top-24 space-y-6">
                 {/* #1 You Minox Sidebar Card */}
                 <YouMinoxSpotlight variant="sidebar" />
+
+                {/* Contextual Amazon Affiliate Sidebar Card */}
+                <AmazonAffiliateBox
+                  variant="sidebar"
+                  sectionTitle={amazonContext.sectionTitle}
+                  sectionSubtitle={amazonContext.sectionSubtitle}
+                  products={amazonContext.products}
+                />
 
                 {/* Mini Top 5 Ranking Box with Flags */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "@/data/brands";
+import MinoxidilTopChatWidget from "@/components/MinoxidilTopChatWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -84,6 +85,7 @@ export default function RootLayout({
     <html lang="es" className={inter.variable}>
       <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
         {children}
+        <MinoxidilTopChatWidget />
       </body>
     </html>
   );

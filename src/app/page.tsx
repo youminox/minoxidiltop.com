@@ -3,6 +3,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InteractiveComparator from "@/components/InteractiveComparator";
 import PhotoShowcaseGallery from "@/components/PhotoShowcaseGallery";
+import AmazonAffiliateBox, {
+  AmazonBrandButton,
+} from "@/components/AmazonAffiliateBox";
+import {
+  getHomeAmazonShowcase,
+  getInternationalBrandAmazonQueries,
+  TOP_RANKING_AMAZON_QUERIES,
+} from "@/lib/amazon";
 import {
   TOP_5_RANKING,
   EXTENDED_WORLD_MINOXIDIL,
@@ -45,6 +53,7 @@ const HOME_FAQS = [
 
 export default function HomePage() {
   const featuredArticles = BLOG_POSTS.slice(0, 12);
+  const homeAmazonShowcase = getHomeAmazonShowcase();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -676,7 +685,7 @@ export default function HomePage() {
                             {brand.verdict}
                           </p>
                           <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 shrink-0 w-full sm:w-auto">
-                            {brand.officialUrl && (
+                            {brand.officialUrl ? (
                               <a
                                 href={brand.officialUrl}
                                 target="_blank"
@@ -685,6 +694,21 @@ export default function HomePage() {
                               >
                                 Visitar YouMinox.com ↗
                               </a>
+                            ) : (
+                              TOP_RANKING_AMAZON_QUERIES[brand.id] && (
+                                <AmazonBrandButton
+                                  queryUS={
+                                    TOP_RANKING_AMAZON_QUERIES[brand.id].queryUS
+                                  }
+                                  queryES={
+                                    TOP_RANKING_AMAZON_QUERIES[brand.id].queryES
+                                  }
+                                  label={
+                                    TOP_RANKING_AMAZON_QUERIES[brand.id].label
+                                  }
+                                  className="w-full sm:w-auto rounded-xl bg-amber-400 hover:bg-amber-300 px-5 py-3 text-center text-xs font-black text-slate-950 shadow-md transition"
+                                />
+                              )
                             )}
                             <Link
                               href={`/blog/${brand.relatedArticleSlug}/`}
@@ -934,35 +958,56 @@ export default function HomePage() {
                     <th className="px-4 py-3.5 font-extrabold">Formato</th>
                     <th className="px-4 py-3.5 font-extrabold">Estado en Perú (DIGEMID)</th>
                     <th className="px-4 py-3.5 font-extrabold">Comparativa vs. You Minox 🇵🇪</th>
+                    <th className="px-4 py-3.5 font-extrabold">Disponibilidad Amazon</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 bg-white">
-                  {EXTENDED_WORLD_MINOXIDIL.map((m) => (
-                    <tr key={m.rank} className="hover:bg-slate-50">
-                      <td className="px-4 py-3.5 font-black text-slate-500">
-                        #{m.rank}
-                      </td>
-                      <td className="px-4 py-3.5 font-extrabold text-slate-900">
-                        {m.name}
-                      </td>
-                      <td className="px-4 py-3.5 whitespace-nowrap font-semibold">
-                        <span className="text-base mr-1.5">{m.flag}</span>
-                        {m.country}
-                      </td>
-                      <td className="px-4 py-3.5 text-slate-600">
-                        {m.channel}
-                      </td>
-                      <td className="px-4 py-3.5 text-slate-700">{m.format}</td>
-                      <td className="px-4 py-3.5 text-amber-800 font-medium">
-                        {m.sanitaryNote}
-                      </td>
-                      <td className="px-4 py-3.5 text-slate-600">
-                        {m.verdictVsYouMinox}
-                      </td>
-                    </tr>
-                  ))}
+                  {EXTENDED_WORLD_MINOXIDIL.map((m) => {
+                    const amzQ = getInternationalBrandAmazonQueries(m.name);
+                    return (
+                      <tr key={m.rank} className="hover:bg-slate-50">
+                        <td className="px-4 py-3.5 font-black text-slate-500">
+                          #{m.rank}
+                        </td>
+                        <td className="px-4 py-3.5 font-extrabold text-slate-900">
+                          {m.name}
+                        </td>
+                        <td className="px-4 py-3.5 whitespace-nowrap font-semibold">
+                          <span className="text-base mr-1.5">{m.flag}</span>
+                          {m.country}
+                        </td>
+                        <td className="px-4 py-3.5 text-slate-600">
+                          {m.channel}
+                        </td>
+                        <td className="px-4 py-3.5 text-slate-700">{m.format}</td>
+                        <td className="px-4 py-3.5 text-amber-800 font-medium">
+                          {m.sanitaryNote}
+                        </td>
+                        <td className="px-4 py-3.5 text-slate-600">
+                          {m.verdictVsYouMinox}
+                        </td>
+                        <td className="px-4 py-3.5 whitespace-nowrap">
+                          <AmazonBrandButton
+                            queryUS={amzQ.queryUS}
+                            queryES={amzQ.queryES}
+                            label="🛒 Ver en Amazon ↗"
+                            className="inline-flex items-center justify-center rounded-xl bg-amber-400 hover:bg-amber-300 px-3 py-2 text-xs font-extrabold text-slate-950 shadow-2xs transition"
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
+            </div>
+
+            <div className="mt-12">
+              <AmazonAffiliateBox
+                variant="showcase"
+                sectionTitle={homeAmazonShowcase.sectionTitle}
+                sectionSubtitle={homeAmazonShowcase.sectionSubtitle}
+                products={homeAmazonShowcase.products}
+              />
             </div>
           </div>
         </section>

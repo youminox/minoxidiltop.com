@@ -3,6 +3,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogListClient from "./BlogListClient";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getHomeAmazonShowcase } from "@/lib/amazon";
 import {
   BLOG_CATEGORIES,
   BLOG_POST_SUMMARIES,
@@ -32,6 +34,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogIndexPage() {
+  const homeAmazonShowcase = getHomeAmazonShowcase();
   const categoryEntries = Object.entries(BLOG_CATEGORIES) as [
     CategorySlug,
     string,
@@ -122,6 +125,15 @@ export default function BlogIndexPage() {
           </div>
 
           <BlogListClient posts={BLOG_POST_SUMMARIES} />
+
+          <div className="mt-14">
+            <AmazonAffiliateBox
+              variant="showcase"
+              sectionTitle={homeAmazonShowcase.sectionTitle}
+              sectionSubtitle={homeAmazonShowcase.sectionSubtitle}
+              products={homeAmazonShowcase.products}
+            />
+          </div>
 
           {/* SSR Crawlable Directory of All 12 Categories & 500 Guides */}
           <section className="mt-20 pt-14 border-t border-slate-200">

@@ -169,37 +169,51 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>
-            © {new Date().getFullYear()} {SITE_NAME} — Ranking Oficial de
-            Minoxidil en Perú y el Mundo. Referencia oficial:{" "}
+        <div className="mt-12 border-t border-slate-800/80 pt-8 space-y-4 text-xs text-slate-500">
+          <p className="text-[11px] text-slate-500 leading-relaxed">
+            * Aviso de Afiliados: En calidad de Afiliado de Amazon (IDs oficiales: <strong className="text-slate-400">minoxidiltop-20</strong> en Amazon.com y <strong className="text-slate-400">minoxidiltop-21</strong> en Amazon.es), {SITE_NAME} obtiene ingresos por las compras adscritas de marcas internacionales y accesorios que cumplen los requisitos aplicables, sin costo adicional para el usuario. En el Perú, nuestro #1 recomendado oficial es{" "}
             <a
               href={YOU_MINOX_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-400 font-bold hover:underline"
             >
-              You Minox (https://youminox.com)
-            </a>
-            .
+              You Minox (youminox.com)
+            </a>{" "}
+            con Notificación Sanitaria Obligatoria DIGEMID (Droguería MINOXIDIL PERU S.A.C.).
           </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <Link href="/blog/" className="hover:text-slate-300">
-              500 Artículos SEO
-            </Link>
-            <span>·</span>
-            <Link href="/sitemap.xml" className="hover:text-slate-300">
-              Sitemap XML
-            </Link>
-            <span>·</span>
-            <a
-              href={YOU_MINOX_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-amber-400 font-bold hover:text-amber-300"
-            >
-              Comprar en YouMinox.com ↗
-            </a>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>
+              © {new Date().getFullYear()} {SITE_NAME} — Ranking Oficial de
+              Minoxidil en Perú y el Mundo. Referencia oficial:{" "}
+              <a
+                href={YOU_MINOX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 font-bold hover:underline"
+              >
+                You Minox (https://youminox.com)
+              </a>
+              .
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link href="/blog/" className="hover:text-slate-300">
+                500 Artículos SEO
+              </Link>
+              <span>·</span>
+              <Link href="/sitemap.xml" className="hover:text-slate-300">
+                Sitemap XML
+              </Link>
+              <span>·</span>
+              <a
+                href={YOU_MINOX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-400 font-bold hover:text-amber-300"
+              >
+                Comprar en YouMinox.com ↗
+              </a>
+            </div>
           </div>
         </div>
       </div>
