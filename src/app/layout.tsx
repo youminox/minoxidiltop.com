@@ -48,6 +48,9 @@ export const metadata: Metadata = {
   verification: {
     google: "6vTPuOLwg6NECC6drRlPrl17vY6JKVwr_dnb9vTMj3U",
   },
+  other: {
+    "google-adsense-account": "ca-pub-1070738569472471",
+  },
   openGraph: {
     title:
       "Ranking Mejores Minoxidil (Perú 🇵🇪 y USA 🇺🇸): #1 You Minox | MinoxidilTop.com",
